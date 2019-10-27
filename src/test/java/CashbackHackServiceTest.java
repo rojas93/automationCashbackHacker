@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 import ru.netology.service.CashbackHackService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class CashbackHackServiceTest {
@@ -11,9 +12,9 @@ public class CashbackHackServiceTest {
     public void cashbackAmount0Test(){
         CashbackHackService cashbackHackService = new  CashbackHackService();
         int amount = 0;
-        int actual = cashbackHackService.remain(amount);
-        int expected = 1000;
-        assertEquals(expected, actual);
+        assertThrows(IllegalArgumentException.class, () -> {
+            cashbackHackService.remain(amount);
+        });
     }
 
     @Test
@@ -46,8 +47,8 @@ public class CashbackHackServiceTest {
     public void cashbackAmountLessThanZeroTest(){
         CashbackHackService cashbackHackService = new  CashbackHackService();
         int amount = -1;
-        int actual = cashbackHackService.remain(amount);
-        int expected = 1001;
-        assertEquals(expected, actual);
+        assertThrows(IllegalArgumentException.class, () -> {
+            cashbackHackService.remain(amount);
+        });
     }
 }
