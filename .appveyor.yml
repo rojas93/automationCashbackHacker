@@ -2,9 +2,9 @@ image: Visual Studio 2015  # образ для сборки
 
 branches:
   only:
-    - master # ветка git
+    - master
 
-build: off  # будем использовать свой скрипт сборки
+build: off
 
 build_script:
   - gradlew build
